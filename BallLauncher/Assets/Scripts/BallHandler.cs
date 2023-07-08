@@ -29,9 +29,9 @@ public class BallHandler : MonoBehaviour
     {
         if (currentBallRigidbody == null) { return; }
 
-        if (!Touchscreen.current.primaryTouch.press.isPressed)
+        if (!Touchscreen.current.primaryTouch.press.isPressed) // dokunmuyorsa
         {
-            if (isDragging)
+            if (isDragging)  // dokunmayı bıraktıysa
             {
                 LaunchBall();
             }
@@ -43,9 +43,9 @@ public class BallHandler : MonoBehaviour
         isDragging = true;
         currentBallRigidbody.isKinematic = true;
 
-        Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+        Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue(); // ekranda dokunulan pixel position
 
-        Vector3 worldPos = mainCamera.ScreenToWorldPoint(touchPos);
+        Vector3 worldPos = mainCamera.ScreenToWorldPoint(touchPos); // screen pos to world pos
 
         currentBallRigidbody.position = worldPos;
 
